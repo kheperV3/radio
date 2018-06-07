@@ -39,25 +39,13 @@ def action_wrapper(hermes, intentMessage, conf):
     """ 
     import time
     import datetime
-    date = datetime.datetime.now()
-    lm = ['janvier','février','mars','avril','mai','juin',\
-    'juillet','aout','septembre','octobre','novembre','décembre']
-    ls = ['lundi','mardi','mercredi','jeudi','vendredi',\
-    'samedi','dimanche']
-    jour = str(date.day)
-    if date.day == 1 :
-        jour = "premier"
-    an = str(date.year)
-    mois = lm[date.month-1]
-    jsemaine = ls[date.weekday()]
-    resul = "nous sommes le " + jsemaine + " " + jour  + " " \
-    + mois 
+ 
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, resul)
+    hermes.publish_end_session(current_session_id, "c'est fait cher maître")
     
 
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
-        h.subscribe_intent("louisros:date", subscribe_intent_callback) \
+        h.subscribe_intent("louisros:settimer", subscribe_intent_callback) \
          .start()
