@@ -40,7 +40,8 @@ def action_wrapper(hermes, intentMessage, conf):
      
     Refer to the documentation for further details. 
    """
-    delay = intentMessage.slots.valeur1.first().value
+    """delay = intentMessage.slots.valeur1.first().value
+    """
     current_session_id = intentMessage.session_id
     """mqtt_client.publish('hermes/dialogueManager/endSession', json.dumps({'text':"coucou",'sessionId':current_session_id}))
     """
