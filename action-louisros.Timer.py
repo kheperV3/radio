@@ -5,7 +5,8 @@ import ConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
-
+import paho.mqtt.client as mqtt
+import requests
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
 
@@ -36,16 +37,13 @@ def action_wrapper(hermes, intentMessage, conf):
     - conf : a dictionary that holds the skills parameters you defined 
      
     Refer to the documentation for further details. 
-    """ 
-    import time
-    import datetime
- 
+   """
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait cher maître")
+    mqtt_client.publish('hermes/dialogueManager/endSession', json.dumps({'text':"coucou",'sessionId':current_session_id}))
+    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
-
-
-if __name__ == "__main__":
+    
+    if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
         h.subscribe_intent("louisros:settimer", subscribe_intent_callback) \
          .start()
