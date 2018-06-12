@@ -28,23 +28,23 @@ def subscribe_intent_callback(hermes, intentMessage):
     action_wrapper(hermes, intentMessage, conf)
 
 
-def setStation_callback(hermes, intentMessage, conf):
+def setStation_callback(hermes, intentMessage):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
-def volumeUp_callback(hermes, intentMessage, conf):
+def volumeUp_callback(hermes, intentMessage):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
-def volumeDown_callback(hermes, intentMessage, conf):
+def volumeDown_callback(hermes, intentMessage):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
-def play_callback(hermes, intentMessage, conf):
+def play_callback(hermes, intentMessage):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
-def pause_callback(hermes, intentMessage, conf):
+def pause_callback(hermes, intentMessage):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
 
