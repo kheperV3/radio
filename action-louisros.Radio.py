@@ -30,8 +30,9 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def setStation_callback(hermes, intentMessage):
-    ip = "http://live03.rfi.fr/rfimonde-96k.mp3"
-    """m = vlc.libvlc_media_new_location(inst,ip)
+    conf = read_configuration_file(CONFIG_INI)
+    """ip = "http://live03.rfi.fr/rfimonde-96k.mp3"
+    m = vlc.libvlc_media_new_location(inst,ip)
     mp = vlc.libvlc_media_player_new_from_media(m)
     vlc.libvlc_media_release(m)
     vlc.libvlc_media_player_play(mp)
@@ -44,22 +45,27 @@ def setStation_callback(hermes, intentMessage):
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
 def volumeUp_callback(hermes, intentMessage):
+    conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
 def volumeDown_callback(hermes, intentMessage):
+    conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
 def play_callback(hermes, intentMessage):
+    conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
 def pause_callback(hermes, intentMessage):
+    conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
 def stop_callback(hermes, intentMessage):
+    conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
 
