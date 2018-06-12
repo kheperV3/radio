@@ -73,4 +73,5 @@ if __name__ == "__main__":
         .subscribe_intent("louisros:volumeDown", volumeDown_callback) \
         .subscribe_intent("louisros:play", play_callback) \
         .subscribe_intent("louisros:stop", stop_callback) \
-        .subscribe_intent("louisros:pause", pause_callback).start()
+        .subscribe_intent("louisros:pause", pause_callback) \
+        .start()
