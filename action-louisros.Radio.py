@@ -28,7 +28,23 @@ def subscribe_intent_callback(hermes, intentMessage):
     action_wrapper(hermes, intentMessage, conf)
 
 
-def action_wrapper(hermes, intentMessage, conf):
+def setStation_callback(hermes, intentMessage, conf):
+    current_session_id = intentMessage.session_id
+    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    
+def volumeUp_callback(hermes, intentMessage, conf):
+    current_session_id = intentMessage.session_id
+    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    
+def volumeDown_callback(hermes, intentMessage, conf):
+    current_session_id = intentMessage.session_id
+    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    
+def play_callback(hermes, intentMessage, conf):
+    current_session_id = intentMessage.session_id
+    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    
+def pause_callback(hermes, intentMessage, conf):
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
 
@@ -36,9 +52,8 @@ def action_wrapper(hermes, intentMessage, conf):
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
         h\
-        .subscribe_intent("louisros:settimer", subscribe_intent_callback) \
-        .subscribe_intent("louisros:settimer", subscribe_intent_callback) \
-        .subscribe_intent("louisros:settimer", subscribe_intent_callback) \
-        .subscribe_intent("louisros:settimer", subscribe_intent_callback) \
-        .subscribe_intent("louisros:settimer", subscribe_intent_callback) \
-        .start()
+        .subscribe_intent("louisros:setStation", setStation_callback) \
+        .subscribe_intent("louisros:volumeUp", volumeUp_callback) \
+        .subscribe_intent("louisros:volumeDown", volumeDown_callback) \
+        .subscribe_intent("louisros:play", play_callback) \
+        .subscribe_intent("louisros:pause", pause_callback).start()
