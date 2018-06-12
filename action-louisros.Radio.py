@@ -37,9 +37,10 @@ def setStation_callback(hermes, intentMessage):
     vlc.libvlc_media_release(m)
     vlc.libvlc_media_player_play(mp)
     vlc.libvlc_audio_set_volume(mp,100)
-    """
+    
     p=vlc.MediaPlayer(ip)
     p.play()
+    """
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
