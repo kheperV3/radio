@@ -33,10 +33,13 @@ def subscribe_intent_callback(hermes, intentMessage):
 def setStation_callback(hermes, intentMessage):
     ip = "http://live03.rfi.fr/rfimonde-96k.mp3"
     m = vlc.libvlc_media_new_location(inst,ip)
-    mp = vlc.libvlc_media_player_new_from_media(m)
+    """mp = vlc.libvlc_media_player_new_from_media(m)
     vlc.libvlc_media_release(m)
     vlc.libvlc_media_player_play(mp)
     vlc.libvlc_audio_set_volume(mp,100)
+    """
+    p=vlc.MediaPlayer(ip)
+    p.play()
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
