@@ -6,7 +6,7 @@ from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
 import os
-import vlc
+
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
