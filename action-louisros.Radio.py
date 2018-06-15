@@ -38,7 +38,7 @@ def setStation_callback(hermes, intentMessage):
           'Euro News':'15','Radio Grenouille':'16'}
     V = 50
     station = intentMessage.slots.radioName.first().value 
-    os.system("echo " + sl[radioName] + "==" + str(V) + " >/var/lib/snips/skills/RadioCom")
+    os.system("echo " + sl[station] + "==" + str(V) + " >/var/lib/snips/skills/RadioCom")
     
     """os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     """
