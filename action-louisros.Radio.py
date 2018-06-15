@@ -14,12 +14,12 @@ CONFIG_INI = "config.ini"
 class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
         return {section : {option_name : option for option_name, option in self.items(section)} for section in self.sections()}
-global S
-global V
+global station = '0'
+global volume = 50
 
 def read_configuration_file(configuration_file):
     try:
-        with io.open(configuration_file, encoding=CONFIGURATION_ENCODING_FORMAT) as f:
+        with io.open(configuration_file, encoding=CONFIGURATION_ENCODIN50G_FORMAT) as f:
             conf_parser = SnipsConfigParser()
             conf_parser.readfp(f)
             return conf_parser.to_dict()
@@ -36,9 +36,9 @@ def setStation_callback(hermes, intentMessage):
     sl = {'RFI' : '0','France Culture': '1','FIP':'2', 'RMC':'3','RTL':'4','France Info':'5','Radio Classic':'6','France Musique':'7',\
           'Jazz Radio':'8','Europe1':'9','Sud Radio':'10','France Inter':'11','Frequence Jazz':'12','Latina':'13','Le Mouv':'14',\
           'Euro News':'15','Radio Grenouille':'16'}
-    V = 50
+    
     station = intentMessage.slots.radioName.first().value 
-    os.system("echo " + sl[station] + "==" + str(V) + " >/var/lib/snips/skills/RadioCom")
+    os.system("echo " + sl[station] + "==" + str(volume) + " >/var/lib/snips/skills/RadioCom")
     
     """os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     """
