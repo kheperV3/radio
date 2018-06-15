@@ -48,31 +48,25 @@ def setStation_callback(hermes, intentMessage):
     
 def volumeUp_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    volume = volume + 10
-    if volume > 100 :
-        volume = 100
-    os.system("echo " + sl[station] + "==" + str(volume) + " >/var/lib/snips/skills/RadioCom")   
+    
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
     
 def volumeDown_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    volume = volume - 10
-    if volume > 0 :
-        volume = 0
-    os.system("echo " + sl[station] + "==" + str(volume) + " >/var/lib/snips/skills/RadioCom")   
+    
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
     
 def play_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    os.system("echo " + sl[station] + "==" + str(volume) + " >/var/lib/snips/skills/RadioCom")  
+   
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
     
 def pause_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    os.system("echo " + sl[station] + "==" + str(0) + " >/var/lib/snips/skills/RadioCom")    
+    
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
     
