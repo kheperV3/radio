@@ -14,8 +14,11 @@ CONFIG_INI = "config.ini"
 class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
         return {section : {option_name : option for option_name, option in self.items(section)} for section in self.sections()}
-
-
+global S
+global V
+sl = {'RFI' : 0,'France Culture': 1,'FIP':2, 'RMC':3,'RTL':4,'France Info':5,'Radio Classic':6,'France Musique':7,'Jazz Radio':8,\
+     'Europe1':9,'Sud Radio':10,'France Inter':11,'Frequence Jazz':12,'Latina':13,'Le Mouv':14,'Euro News':15,'Radio Grenouille':16}
+V = 50
 def read_configuration_file(configuration_file):
     try:
         with io.open(configuration_file, encoding=CONFIGURATION_ENCODING_FORMAT) as f:
@@ -28,20 +31,13 @@ def read_configuration_file(configuration_file):
 def subscribe_intent_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     action_wrapper(hermes, intentMessage, conf)
-
+ 
 
 def setStation_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    ip = "http://live03.rfi.fr/rfimonde-96k.mp3"
-    """m = vlc.libvlc_media_new_location(inst,ip)
-    mp = vlc.libvlc_media_player_new_from_media(m)
-    vlc.libvlc_media_release(m)
-    vlc.libvlc_media_player_play(mp)
-    vlc.libvlc_audio_set_volume(mp,100)
     
-    p=vlc.MediaPlayer(ip)
-    p.play()
-    """
+    station = intentMessage.slots.radioName.first().value 
+    os.system('echo str(Sl[radioName])+"=="+str(V)>/var/lib/snips/skills/RadioCom')
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
