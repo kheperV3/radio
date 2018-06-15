@@ -37,36 +37,38 @@ def setStation_callback(hermes, intentMessage):
      'Europe1':9,'Sud Radio':10,'France Inter':11,'Frequence Jazz':12,'Latina':13,'Le Mouv':14,'Euro News':15,'Radio Grenouille':16}
     V = 50
     station = intentMessage.slots.radioName.first().value 
-    """os.system('echo str(Sl[radioName])+"=="+str(V)>/var/lib/snips/skills/RadioCom')
+    os.system("echo " + str(Sl[radioName])+"=="+str(V)+">/var/lib/snips/skills/RadioCom")
+    
+    """os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     """
-    os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
     
 def volumeUp_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
     
 def volumeDown_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
     
 def play_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
     
 def pause_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
     
 def stop_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
+    os.system("rm /var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
 
 
 if __name__ == "__main__":
