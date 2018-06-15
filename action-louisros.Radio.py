@@ -41,7 +41,7 @@ def setStation_callback(hermes, intentMessage):
     """
     os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
+    hermes.publish_end_session(current_session_id, "")
     
 def volumeUp_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
