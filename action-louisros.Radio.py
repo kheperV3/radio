@@ -37,7 +37,9 @@ def setStation_callback(hermes, intentMessage):
      'Europe1':9,'Sud Radio':10,'France Inter':11,'Frequence Jazz':12,'Latina':13,'Le Mouv':14,'Euro News':15,'Radio Grenouille':16}
     V = 50
     station = intentMessage.slots.radioName.first().value 
-    os.system('echo str(Sl[radioName])+"=="+str(V)>/var/lib/snips/skills/RadioCom')
+    """os.system('echo str(Sl[radioName])+"=="+str(V)>/var/lib/snips/skills/RadioCom')
+    """
+    os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "c'est fait Monsieur")
     
