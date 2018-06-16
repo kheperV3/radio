@@ -25,11 +25,7 @@ def read_configuration_file(configuration_file):
     except (IOError, ConfigParser.Error) as e:
         return dict()
 
-def subscribe_intent_callback(hermes, intentMessage):
-    conf = read_configuration_file(CONFIG_INI)
-    """action_wrapper(hermes, intentMessage, conf)
-    """
- 
+
 
 def setStation_callback(hermes, intentMessage):   
     conf = read_configuration_file(CONFIG_INI)
@@ -38,9 +34,7 @@ def setStation_callback(hermes, intentMessage):
           'Euro News':'15','Radio Grenouille':'16'}
     
     station = intentMessage.slots.radioName.first().value 
-    os.system("echo " + sl[station] + "==" + str(50) + " >/var/lib/snips/skills/RadioCom")
-  
-    """os.system("echo 1==60 >/var/lib/snips/skills/RadioCom")
+    """os.system("echo " + sl[station] + "==" + str(50) + " >/var/lib/snips/skills/RadioCom")
     """
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "")
