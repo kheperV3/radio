@@ -5,7 +5,7 @@ import ConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
-import os
+
 
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
@@ -31,19 +31,19 @@ def selectStation_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "bien cher Maître")
+    hermes.publish_end_session(current_session_id, "station cher Maître")
     
 def volume_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)   
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "")
+    hermes.publish_end_session(current_session_id, "volume cher Maître")
     
 
 def stop_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
     os.system("rm /var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "")
+    hermes.publish_end_session(current_session_id, "stop cher Maître")
 
 
 if __name__ == "__main__":
