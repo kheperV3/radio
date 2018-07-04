@@ -29,11 +29,16 @@ def read_configuration_file(configuration_file):
 
 def callback(self, hermes, intentMessage):   
     conf = read_configuration_file(CONFIG_INI)   
-    
+    if intentMessage.intent.intent_name == 'selectStation' :
+        m = 'station'
+    if intentMessage.intent.intent_name == 'changeVolume' :
+        m = 'volume'
+    if intentMessage.intent.intent_name == 'stopRadio'
+        m = 'radio'
     
     
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "station cher Maître")
+    hermes.publish_end_session(current_session_id, m)
     
 
 if __name__ == "__main__":
