@@ -28,8 +28,7 @@ def read_configuration_file(configuration_file):
 
 
 def selectStation_callback(hermes, intentMessage):   
-    conf = read_configuration_file(CONFIG_INI)
-    
+    conf = read_configuration_file(CONFIG_INI)   
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "station cher Maître")
     
@@ -41,7 +40,6 @@ def volume_callback(hermes, intentMessage):
 
 def stop_callback(hermes, intentMessage):
     conf = read_configuration_file(CONFIG_INI)
-    os.system("rm /var/lib/snips/skills/RadioCom")
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, "stop cher Maître")
 
