@@ -17,11 +17,12 @@ def intents_callback(hermes, intentMessage) :
     
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         m = 'station'
-    if intentMessage.intent.intent_name == 'louisros:changeVolume' :
+    elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
-    if intentMessage.intent.intent_name == 'louisros:stopRadio'
+    elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         m = 'radio'   
-      
+    else:
+        m = 'je n'ai rien compris'
     
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, m)
