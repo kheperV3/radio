@@ -30,8 +30,7 @@ def read_configuration_file(configuration_file):
 def callback(self, hermes, intentMessage): 
     conf = read_configuration_file(CONFIG_INI)
     action_wrapper(hermes,intentMessage,conf)
-    
-    
+        
  def action_wrapper(hermes,intentMessage,conf) :
     
     if intentMessage.intent.intent_name == 'selectStation' :
