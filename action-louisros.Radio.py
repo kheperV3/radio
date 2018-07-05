@@ -33,12 +33,14 @@ def callback(self, hermes, intentMessage):
         
  def action_wrapper(hermes,intentMessage,conf) :
     
-    if intentMessage.intent.intent_name == 'selectStation' :
+    """if intentMessage.intent.intent_name == 'selectStation' :
         m = 'station'
     if intentMessage.intent.intent_name == 'changeVolume' :
         m = 'volume'
     if intentMessage.intent.intent_name == 'stopRadio'
         m = 'radio'   
+    """   
+    m = "test OK"
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, m)
     
@@ -46,5 +48,5 @@ def callback(self, hermes, intentMessage):
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:    
         
-        h.subscribe_intent('louisros:selectStation', self.callback).start()
+        h.subscribe_intent('louisros:selectStation', callback).start()
         
