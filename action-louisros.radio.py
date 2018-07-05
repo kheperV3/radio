@@ -25,13 +25,7 @@ def read_configuration_file(configuration_file):
     except (IOError, ConfigParser.Error) as e:
         return dict()
 
-
-
-def callback(hermes, intentMessage) : 
-    conf = read_configuration_file(CONFIG_INI)
-    action_wrapper(hermes,intentMessage,conf)
-        
- def action_wrapper(hermes,intentMessage,conf) :
+def action_wrapper(hermes,intentMessage,conf) :
     
     """if intentMessage.intent.intent_name == 'selectStation' :
         m = 'station'
@@ -43,6 +37,12 @@ def callback(hermes, intentMessage) :
     m = "test OK"
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, m)
+
+def callback(hermes, intentMessage) : 
+    conf = read_configuration_file(CONFIG_INI)
+    action_wrapper(hermes,intentMessage,conf)
+        
+ 
     
 
 if __name__ == "__main__":
