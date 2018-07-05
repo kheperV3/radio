@@ -17,7 +17,7 @@ def intents_callback(hermes, intentMessage) :
     elif intentMessage.intent.intent_name == 'stopRadio':
         m = 'radio'   
     else:
-        m = 'je n'ai rien compris'
+        m = "je n'ai rien compris"
     
     m = "c'est difficile"
     current_session_id = intentMessage.session_id
@@ -25,7 +25,6 @@ def intents_callback(hermes, intentMessage) :
 
 
 if __name__ == "__main__":
-    with Hermes(MQTT_ADDR) as h:    
-        
+    with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback).start()
         
