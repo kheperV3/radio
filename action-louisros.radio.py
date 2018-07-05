@@ -10,11 +10,11 @@ MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
 def intents_callback(hermes, intentMessage) : 
     
-    if intentMessage.intent.intent_name == 'selectStation' :
+    if intentMessage.intent.intent_name == 'louisros:selectStation' :
         m = 'station'
-    elif intentMessage.intent.intent_name == 'changeVolume' :
+    elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
-    elif intentMessage.intent.intent_name == 'stopRadio':
+    elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         m = 'radio'   
     else:
         m = "je n'ai rien compris"
