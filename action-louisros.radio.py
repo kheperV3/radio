@@ -9,13 +9,9 @@ MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
 
-
-
-
-
 def intents_callback(hermes, intentMessage) : 
     
-    """if intentMessage.intent.intent_name == 'selectStation' :
+    if intentMessage.intent.intent_name == 'selectStation' :
         m = 'station'
     elif intentMessage.intent.intent_name == 'changeVolume' :
         m = 'volume'
@@ -23,7 +19,7 @@ def intents_callback(hermes, intentMessage) :
         m = 'radio'   
     else:
         m = 'je n'ai rien compris'
-    """
+    
     m = "c'est difficile"
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, m)
