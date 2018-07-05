@@ -19,7 +19,7 @@ def intents_callback(hermes, intentMessage) :
     else:
         m = "je n'ai rien compris"
     
-    m = "c'est difficile"
+#    m = "c'est difficile"
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, m)
 
