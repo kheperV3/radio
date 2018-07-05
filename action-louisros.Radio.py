@@ -47,5 +47,5 @@ def callback(self, hermes, intentMessage):
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:    
         
-        h.subscribe_intents(self.callback).start()
+        h.subscribe_intent('louisros:selectStation', self.callback).start()
         
