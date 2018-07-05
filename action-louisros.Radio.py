@@ -27,7 +27,7 @@ def read_configuration_file(configuration_file):
 
 
 
-def callback(self, hermes, intentMessage): 
+def callback(hermes, intentMessage) : 
     conf = read_configuration_file(CONFIG_INI)
     action_wrapper(hermes,intentMessage,conf)
         
