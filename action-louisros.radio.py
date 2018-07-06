@@ -32,8 +32,7 @@ def intents_callback(hermes, intentMessage) :
              "Radio Grenouille":"http://live.radiogrenouille.com/live",\
              "Belgique":"https://radios.rtbf.be/laprem1ere-128.mp3",\
              "Canada":"http://2QMTL0.akacast.akamaistream.net:80/7/953/177387/v1/rc.akacast.akamaistream.net/2QMTL0",\
-             "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"
-}
+             "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"}
 
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         fv =open("/var/lib/snips/skills/live","r")
