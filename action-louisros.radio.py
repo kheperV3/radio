@@ -3,17 +3,19 @@
 
 from hermes_python.hermes import Hermes
 import vlc
+import threading
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
-
+def play () :
+    p = vlc.MediaPlayer("http://stream.srg-ssr.ch/m/la-1ere/mp3_128")
+    p.play()
 
 def intents_callback(hermes, intentMessage) : 
     
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
-        p = vlc.MediaPlayer("http://stream.srg-ssr.ch/m/la-1ere/mp3_128")
-        p.play()
+        threading.Thread(target=play).start()
         m = 'station'
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
