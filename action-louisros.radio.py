@@ -32,7 +32,7 @@ def intents_callback(hermes, intentMessage) :
              "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"}
 
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
-        fv =open("/var/lib/snips/skills/live","r")
+        fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
         fv.close()
         if int(live) == 0 :
