@@ -46,17 +46,19 @@ def intents_callback(hermes, intentMessage) :
         fv =open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
-        
+        station = intentMessage.slots.radioName.first().value 
+        fc=open("/var/lib/snips/skills/link","w")
+        fc.write(links[station])
+        fc.close()
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         m = 'radio'   
-    else:
-        m = "je n'ai rien compris"
+  
     
-#    m = "c'est difficile"
+
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, m)
+    hermes.publish_end_session(current_session_id, "")
 
 
 if __name__ == "__main__":
