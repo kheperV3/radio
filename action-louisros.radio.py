@@ -51,7 +51,34 @@ def intents_callback(hermes, intentMessage) :
 
         
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
-        m = 'volume'
+        vol = intentMessage.slots.var.first().value 
+        fv =open("/var/lib/snips/skills/volume","r")
+        volume = fv.read()
+        fv.close()
+        if vol == "plus fort":
+            v = int(volume)
+            v = v + 1
+            if v > 10 :
+            v = 10
+            volume = str(v)
+        elif vol == "moins fort":
+            v = int(volume)
+            v = v - 1
+            if v < 0 :
+            v = 0
+            volume =str(v)
+        else:
+            volume = str(int(vol))  
+
+  
+        fv =open("/var/lib/snips/skills/volume","w")
+        fv.write(volume)
+        fv.close()
+        live = "0003"
+        fv =open("/var/lib/snips/skills/live","w") 
+        fv.write(live)
+        fv.close()
+
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
