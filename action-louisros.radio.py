@@ -34,7 +34,7 @@ def intents_callback(hermes, intentMessage) :
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         station = intentMessage.slots.radioName.first().value 
         m = "tout va bien"
-
+        live = "    "
         fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
         fv.close()
