@@ -45,7 +45,7 @@ def intents_callback(hermes, intentMessage) :
             live = "0001"
         if live == "0004" :
             live = "0002"
-
+        live = "0000"
         fv =open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
