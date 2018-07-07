@@ -10,7 +10,7 @@ MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
 
 def intents_callback(hermes, intentMessage) : 
-    """links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
+    links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
              "France Culture":"http://direct.franceculture.fr/live/franceculture-midfi.mp3",\
              "FIP":"http://direct.fipradio.fr/live/fip-midfi.mp3",\
              "RMC":"http://rmc.bfmtv.com/rmcinfo-mp3",\
@@ -30,7 +30,7 @@ def intents_callback(hermes, intentMessage) :
              "Belgique":"https://radios.rtbf.be/laprem1ere-128.mp3",\
              "Canada":"http://2QMTL0.akacast.akamaistream.net:80/7/953/177387/v1/rc.akacast.akamaistream.net/2QMTL0",\
              "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"}
-"""
+
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         station = intentMessage.slots.radioName.first().value 
         m = "tout va bien"
@@ -51,7 +51,7 @@ def intents_callback(hermes, intentMessage) :
 
  
         fv=open("/var/lib/snips/skills/link","w")
-        fv.write("http://live02.rfi.fr/rfimonde-96k.mp3")
+        fv.write(links[station])
         fv.close()
 
 
