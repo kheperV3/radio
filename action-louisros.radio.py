@@ -55,6 +55,8 @@ def intents_callback(hermes, intentMessage) :
         fv =open("/var/lib/snips/skills/volume","r")
         volume = fv.read()
         fv.close()
+        if volume[len(volume)] == '\0' :
+            volume = volume[:len(volume)]
         if vol == "plus fort":
             v = int(volume)
             v = v + 1
