@@ -40,7 +40,7 @@ def intents_callback(hermes, intentMessage) :
             fv.close()
         except:
             live = "0000"
-      
+        print "===>" + live
         if live == "0000" :
             live = "0001"
         if live == "0004" :
