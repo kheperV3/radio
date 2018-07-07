@@ -34,28 +34,28 @@ def intents_callback(hermes, intentMessage) :
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         station = intentMessage.slots.radioName.first().value 
         m = "tout va bien"
-        try:
-            fv = open("/var/lib/snips/skills/live","r")
-            live = fv.read()
-            fv.close()
-        except:
-            m = "première erreur"
+
+        fv = open("/var/lib/snips/skills/live","r")
+        live = fv.read()
+        fv.close()
+
+       
         if int(live) == 0 :
             live = "1"
         if int(live) == 4 :
             live = "2"
-        try:    
-            fv =open("/var/lib/snips/skills/live","w") 
-            fv.write(live)
-            fv.close()
-        except:
-            m = "deuxième erreur"
-        try:    
-            fv=open("/var/lib/snips/skills/link","w")
-            fv.write("http://live02.rfi.fr/rfimonde-96k.mp3")
-            fv.close()
-        except:
-            m = "troisième erreur"
+
+        fv =open("/var/lib/snips/skills/live","w") 
+        fv.write(live)
+        fv.close()
+
+
+ 
+        fv=open("/var/lib/snips/skills/link","w")
+        fv.write("http://live02.rfi.fr/rfimonde-96k.mp3")
+        fv.close()
+
+
         
         
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
