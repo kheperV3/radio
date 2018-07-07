@@ -45,7 +45,7 @@ def intents_callback(hermes, intentMessage) :
             live = 2
 
         fv =open("/var/lib/snips/skills/live","w") 
-        fv.write("0036")
+        fv.write(str(live))
         fv.close()
 
         fv=open("/var/lib/snips/skills/link","w")
