@@ -75,7 +75,7 @@ def intents_callback(hermes, intentMessage) :
         fv.write(volume)
         fv.close()
         live = "0003"
-        fv =open("/var/lib/snips/skills/live","w") 
+        fv = open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
 
