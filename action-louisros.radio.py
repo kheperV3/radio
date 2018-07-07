@@ -45,17 +45,13 @@ def intents_callback(hermes, intentMessage) :
             live = 2
 
         fv =open("/var/lib/snips/skills/live","w") 
-        fv.write(str(live))
+        fv.write("0036")
         fv.close()
 
-
- 
         fv=open("/var/lib/snips/skills/link","w")
         fv.write(links[station])
         fv.close()
 
-
-        
         
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
