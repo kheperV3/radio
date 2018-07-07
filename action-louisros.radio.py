@@ -39,7 +39,7 @@ def intents_callback(hermes, intentMessage) :
         live = fv.read()
         fv.close()
       
-        if int(live) == 0 :
+        if live == 0 :
             live = "0001"
         if int(live) == 4 :
             live = "0002"
