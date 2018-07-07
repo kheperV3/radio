@@ -68,8 +68,10 @@ def intents_callback(hermes, intentMessage) :
                 v = 0
             volume =str(v)
         else:
-            volume = str(int(vol))  
+            volume = str(int(vol))  + '\0'
 
+            
+            
   
         fv =open("/var/lib/snips/skills/volume","w")
         fv.write(volume)
