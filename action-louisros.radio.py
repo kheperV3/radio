@@ -60,13 +60,13 @@ def intents_callback(hermes, intentMessage) :
             v = v + 1
             if v > 10 :
                 v = 10
-            volume = str(v)
+            volume = str(v) + '\0'
         elif vol == "moins fort":
             v = int(volume)
             v = v - 1
             if v < 0 :
                 v = 0
-            volume =str(v)
+            volume =str(v) + '\0'
         else:
             volume = str(int(vol))  + '\0'
 
