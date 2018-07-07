@@ -32,24 +32,27 @@ def intents_callback(hermes, intentMessage) :
              "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"}
 
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
-        station = intentMessage.slots.radioName.first().value 
-        m = "tout va bien"
-        
+# on récupère le nom de la radio        
+        station = intentMessage.slots.radioName.first().value     
+    
+"""On lit et on met à jour l'état de la radio => live
+0 ==> arrêt
+1 ==> 1ere station demandée
+2 ==> nouvelle station demandée
+3 ==> nouveau volume demandé
+4 ==> en cours
+"""
         fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
-        fv.close()
-        
-            
-        
+        fv.close()              
         if live == "0000" :
             live = "0001"
         if live == "0004" :
-            live = "0002"
-        
+            live = "0002"        
         fv =open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
-
+#transmission du lien de la station demandée
         fv=open("/var/lib/snips/skills/link","w")
         fv.write(links[station])
         fv.close()
@@ -63,7 +66,7 @@ def intents_callback(hermes, intentMessage) :
     
 
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, m)
+    hermes.publish_end_session(current_session_id, "")
 
 
 if __name__ == "__main__":
