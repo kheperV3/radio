@@ -41,6 +41,7 @@ def intents_callback(hermes, intentMessage) :
 2 ==> nouvelle station demandée
 3 ==> nouveau volume demandé
 4 ==> en cours
+5 ==> arrêt demandé
 """
         fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
@@ -61,8 +62,14 @@ def intents_callback(hermes, intentMessage) :
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
-        m = 'radio'   
-  
+        fv = open("/var/lib/snips/skills/live","r")
+        live = fv.read()
+        fv.close()              
+        if live == "0004" : 
+            live = "0005"
+            fv =open("/var/lib/snips/skills/live","w") 
+            fv.write(live)
+            fv.close()
     
 
     current_session_id = intentMessage.session_id
