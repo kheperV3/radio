@@ -34,18 +34,18 @@ def intents_callback(hermes, intentMessage) :
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         station = intentMessage.slots.radioName.first().value 
         m = "tout va bien"
-        try:
-            fv = open("/var/lib/snips/skills/live","r")
-            live = fv.read()
-            fv.close()
-        except:
-            live = "0000"
-        print "===>" + live
+        
+        fv = open("/var/lib/snips/skills/live","r")
+        live = fv.read()
+        fv.close()
+        
+            
+        
         if live == "0000" :
             live = "0001"
         if live == "0004" :
             live = "0002"
-        live = "0000"
+        
         fv =open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
