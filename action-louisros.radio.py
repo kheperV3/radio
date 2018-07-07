@@ -32,7 +32,7 @@ def intents_callback(hermes, intentMessage) :
              "Suisse":"http://stream.srg-ssr.ch/m/la-1ere/mp3_128"}
 """
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
-        fv = open("/var/lib/snips/skills/live","r")
+        """fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
         fv.close()
         if int(live) == 0 :
@@ -46,6 +46,8 @@ def intents_callback(hermes, intentMessage) :
         fc=open("/var/lib/snips/skills/link","w")
         fc.write("http://live02.rfi.fr/rfimonde-96k.mp3")
         fc.close()
+        """
+        m = "station"
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
@@ -54,7 +56,7 @@ def intents_callback(hermes, intentMessage) :
     
 
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "")
+    hermes.publish_end_session(current_session_id, m)
 
 
 if __name__ == "__main__":
