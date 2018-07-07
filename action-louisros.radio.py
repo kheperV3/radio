@@ -34,7 +34,7 @@ def intents_callback(hermes, intentMessage) :
     if intentMessage.intent.intent_name == 'louisros:selectStation' :
         station = intentMessage.slots.radioName.first().value 
         m = "tout va bien"
-        """try:
+        try:
             fv = open("/var/lib/snips/skills/live","r")
             live = fv.read()
             fv.close()
@@ -56,7 +56,7 @@ def intents_callback(hermes, intentMessage) :
             fv.close()
         except:
             m = "troisième erreur"
-        """
+        
         
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         m = 'volume'
