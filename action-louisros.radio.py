@@ -39,9 +39,9 @@ def intents_callback(hermes, intentMessage) :
         live = fv.read()
         fv.close()
       
-        if live == 0 :
+        if int(live) == 0 :
             live = "0001"
-        if live == 4 :
+        if int(live) == 4 :
             live = "0002"
 
         fv =open("/var/lib/snips/skills/live","w") 
