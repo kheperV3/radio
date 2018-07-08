@@ -28,11 +28,13 @@ La radio est composée :
 """                    
 def PyString(s) :
       if s[len(s)-1] == '\0' :
-            s = s[:len(s)-1]
+            s = s[0:len(s)-1]
       return s
       
 def CString(s):
-      return s + '\0'
+      if s[len(s)-1] != '\0' :
+            s = s + '\0'
+      return s 
 
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
@@ -73,7 +75,6 @@ def intents_callback(hermes, intentMessage) :
         fv=open("/var/lib/snips/skills/link","w")
         fv.write(CString(links[station]))
         fv.close()
-
         resul = ""
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         vol = intentMessage.slots.var.first().value 
