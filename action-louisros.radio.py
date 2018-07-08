@@ -49,7 +49,7 @@ def intents_callback(hermes, intentMessage) :
         fv.write(links[station])
         fv.close()
 
-        
+        resul = ""
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         vol = intentMessage.slots.var.first().value 
         fv =open("/var/lib/snips/skills/volume","r")
@@ -82,7 +82,7 @@ def intents_callback(hermes, intentMessage) :
         fv = open("/var/lib/snips/skills/live","w") 
         fv.write(live)
         fv.close()
-
+        resul = ""
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         fv = open("/var/lib/snips/skills/live","r")
         live = fv.read()
@@ -92,10 +92,34 @@ def intents_callback(hermes, intentMessage) :
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(live)
             fv.close()
-    
-
+         resul = ""
+    elif intentMessage.intent.intent_name == 'louisros:time':
+            import time
+            import datetime
+            date = datetime.datetime.now()
+            heure = str(date.hour)
+            if date.hour == 1 :
+                heure = "une"
+            if date.hour == 21 :
+                heure = "vingt et une"
+            minute = str(date.minute)
+            if date.minute == 0 :
+                minute = "précises"
+            if date.minute == 1 :
+                minute = "une"
+            if date.minute == 21 :
+                minute = "vingt et une"
+            if date.minute == 31 :
+                minute = "trente et une"
+            if date.minute == 41 :
+                minute = "quarante et une"
+            if date.minute == 51 :
+                minute = "cinquante et une"
+            resul = "il est   " + heure + 'heures    ' + minute
+            
+            
     current_session_id = intentMessage.session_id
-    hermes.publish_end_session(current_session_id, "")
+    hermes.publish_end_session(current_session_id, resul)
 
 
 if __name__ == "__main__":
