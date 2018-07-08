@@ -92,7 +92,7 @@ def intents_callback(hermes, intentMessage) :
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(live)
             fv.close()
-         resul = ""
+        resul = ""
     elif intentMessage.intent.intent_name == 'louisros:time':
             import time
             import datetime
