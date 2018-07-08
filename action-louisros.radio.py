@@ -26,7 +26,13 @@ La radio est composée :
                     = 4     station en cours de diffusion
                     = 5     arrêt immédiat demandé
 """                    
-                    
+def PyString(s) :
+      if s[len(s)-1] == '\0' :
+            s = s[:len(s)-1]
+      return s
+      
+def CString(s):
+      return s + '\0'
 
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
@@ -54,62 +60,58 @@ def intents_callback(hermes, intentMessage) :
 
         station = intentMessage.slots.radioName.first().value  
         fv = open("/var/lib/snips/skills/live","r")
-        live = fv.read()
+        live = PyString(fv.read())
         fv.close()              
         if live == "0000" :
             live = "0001"
         if live == "0004" :
             live = "0002"        
         fv =open("/var/lib/snips/skills/live","w") 
-        fv.write(live)
+        fv.write(CString(live))
         fv.close()
 
         fv=open("/var/lib/snips/skills/link","w")
-        fv.write(links[station])
+        fv.write(CString(links[station]))
         fv.close()
 
         resul = ""
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         vol = intentMessage.slots.var.first().value 
         fv =open("/var/lib/snips/skills/volume","r")
-        volume = fv.read()
+        volume = PyString(fv.read())
         fv.close()
-        if volume[len(volume) - 1] == '\0' :
-            volume = volume[:len(volume) - 1]
         if vol == "plus fort":
             v = int(volume)
             v = v + 1
             if v > 10 :
                 v = 10
-            volume = str(v) + '\0'
+            volume = str(v) 
         elif vol == "moins fort":
             v = int(volume)
             v = v - 1
             if v < 0 :
                 v = 0
-            volume =str(v) + '\0'
+            volume =str(v)
         else:
-            volume = str(int(vol))  + '\0'
-
-            
-            
+            volume = str(int(vol)) 
+          
   
         fv =open("/var/lib/snips/skills/volume","w")
-        fv.write(volume)
+        fv.write(CString(volume))
         fv.close()
         live = "0003"
         fv = open("/var/lib/snips/skills/live","w") 
-        fv.write(live)
+        fv.write(CString(live))
         fv.close()
         resul = ""
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
         fv = open("/var/lib/snips/skills/live","r")
-        live = fv.read()
+        live = PyString(fv.read())
         fv.close()              
         if live == "0004" : 
             live = "0005"
             fv =open("/var/lib/snips/skills/live","w") 
-            fv.write(live)
+            fv.write(CString(live))
             fv.close()
         resul = ""
     elif intentMessage.intent.intent_name == 'louisros:time':
