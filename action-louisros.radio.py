@@ -7,7 +7,26 @@ from hermes_python.hermes import Hermes
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
-
+"""
+La radio est composée :
+      - A: d'une tâche de fond wL lancée au démarrage (non modifiable)
+      - B: l'interface Snips (modifiable)
+      il contient des noms des stations radios accessibles 
+               - dans le slot "radioName" de type custom "stations"
+               - dans le dictionnaire "links" qui contient aussi les liens vers les stations
+               (attention les valeurs de "stations" et les clés de "links" doivent être strictement identiques!)
+      A et B se synchronisent par 3 fichiers:
+               - volume : le volume (de 0 à 10)
+               - link : le lien vers la radio
+               - live : l'état du système
+                    = 0     arrêt
+                    = 1     1ere station demandée
+                    = 2     nouvelle station demandée
+                    = 3     nouveau volume demandé
+                    = 4     station en cours de diffusion
+                    = 5     arrêt immédiat demandé
+"""                    
+                    
 
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
