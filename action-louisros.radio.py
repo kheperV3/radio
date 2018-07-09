@@ -70,14 +70,14 @@ def intents_callback(hermes, intentMessage) :
 
         station = intentMessage.slots.radioName.first().value  
         fv = open("/var/lib/snips/skills/live","r")
-        live = PyString(fv.read())
+        live = int(PyString(fv.read()))
         fv.close()              
-        if live == "0000" :
-            live = "0001"
-        if live == "0004" :
-            live = "0002"        
+        if live == 0 :
+            live = 1
+        if live == 4 :
+            live = 2        
         fv =open("/var/lib/snips/skills/live","w") 
-        fv.write(CString(live))
+        fv.write(CString(str(live)))
         fv.close()
 
         fv=open("/var/lib/snips/skills/link","w")
@@ -109,9 +109,9 @@ def intents_callback(hermes, intentMessage) :
         fv =open("/var/lib/snips/skills/volume","w")
         fv.write(CString(volume))
         fv.close()
-        live = "3"
+        live = 3
         fv = open("/var/lib/snips/skills/live","w") 
-        fv.write(CString(live))
+        fv.write(CString(str(live)))
         fv.close()
         resul = ""
             
@@ -124,14 +124,14 @@ def intents_callback(hermes, intentMessage) :
             delay = -1
         
         fv = open("/var/lib/snips/skills/live","r")
-        live = PyString(fv.read())
+        live = int(PyString(fv.read()))
         fv.close()              
-        if live == "0004" : 
-            live = "0006"
+        if live == 0 : 
+            live = 6
             if delay == -1 :
-                  live = "0005"
+                  live = 5
             fv =open("/var/lib/snips/skills/live","w") 
-            fv.write(CString(live))
+            fv.write(CString(str(live)))
             fv.close()
         if delay != -1 :   
             fv =open("/var/lib/snips/skills/delay","w") 
