@@ -72,10 +72,10 @@ def intents_callback(hermes, intentMessage) :
         fv = open("/var/lib/snips/skills/live","r")
         live = PyString(fv.read())
         fv.close()              
-        if live == "0" :
-            live = "1"
-        if live == "4" :
-            live = "2"        
+        if live == "0000" :
+            live = "0001"
+        if live == "0004" :
+            live = "0002"        
         fv =open("/var/lib/snips/skills/live","w") 
         fv.write(CString(live))
         fv.close()
@@ -126,10 +126,10 @@ def intents_callback(hermes, intentMessage) :
         fv = open("/var/lib/snips/skills/live","r")
         live = PyString(fv.read())
         fv.close()              
-        if live == "4" : 
-            live = "6"
+        if live == "0004" : 
+            live = "0006"
             if delay == -1 :
-                  live = "5"
+                  live = "0005"
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(live))
             fv.close()
