@@ -8,6 +8,11 @@ MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 """
+================================================================
+ATTENTION utilise la carte audio raspiaudioPlus (raspiaudio.com)
+led : pin 22, gpio25
+bouton poussoir : pin 16, gpio23
+=================================================================
 La radio est composée :
       - A: d'une tâche de fond wL lancée au démarrage (non modifiable)
       - B: l'interface Snips (modifiable)
