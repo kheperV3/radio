@@ -137,8 +137,7 @@ def intents_callback(hermes, intentMessage) :
             fv =open("/var/lib/snips/skills/delay","w") 
             fv.write(CString(str(delay*60))
             fv.close()
-            
-            
+                  
         resul = ""
       
       
