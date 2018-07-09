@@ -20,7 +20,7 @@ La radio est composée :
                - dans le slot "radioName" de type custom "stations"
                - dans le dictionnaire "links" qui contient aussi les liens vers les stations
                (attention les valeurs de "stations" et les clés de "links" doivent être strictement identiques!)
-      A et B se synchronisent par 3 fichiers:
+      A et B se synchronisent par 4 fichiers:
                - volume : le volume (de 0 à 10)
                - link : le lien vers la radio
                - live : l'état du système
@@ -30,6 +30,8 @@ La radio est composée :
                     = 3     nouveau volume demandé
                     = 4     station en cours de diffusion
                     = 5     arrêt immédiat demandé
+                    = 6     arrêt temporisé demandé
+                - delay : valeur du délai avant arrêt (en secondes)
 """                    
 def PyString(s) :
       if s[len(s)-1] == '\0' :
