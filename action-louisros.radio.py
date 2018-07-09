@@ -84,6 +84,7 @@ def intents_callback(hermes, intentMessage) :
         fv.write(CString(links[station]))
         fv.close()
         resul = ""
+      
     elif intentMessage.intent.intent_name == 'louisros:changeVolume' :
         vol = intentMessage.slots.var.first().value 
         fv =open("/var/lib/snips/skills/volume","r")
@@ -126,10 +127,9 @@ def intents_callback(hermes, intentMessage) :
         live = PyString(fv.read())
         fv.close()              
         if live == "4" : 
+            live = "6"
             if delay == -1 :
                   live = "5"
-            else:
-                  live = "6"
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(live))
             fv.close()
