@@ -105,7 +105,7 @@ def intents_callback(hermes, intentMessage) :
         else:
             volume = str(int(vol)) 
           
-  
+ 
         fv =open("/var/lib/snips/skills/volume","w")
         fv.write(CString(volume))
         fv.close()
@@ -126,9 +126,9 @@ def intents_callback(hermes, intentMessage) :
         fv = open("/var/lib/snips/skills/live","r")
         live = int(PyString(fv.read()))
         fv.close()              
-        if live == 0 : 
+        if live == 4 : 
             live = 6
-            if delay == 0 :
+            if delay == -1 :
                   live = 5
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(str(live)))
