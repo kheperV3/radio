@@ -128,12 +128,12 @@ def intents_callback(hermes, intentMessage) :
         fv.close()              
         if live == 0 : 
             live = 6
-            if delay == -1 :
+            if delay == 0 :
                   live = 5
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(str(live)))
             fv.close()
-        if delay != -1 :   
+        if delay != 0 :   
             fv =open("/var/lib/snips/skills/delay","w") 
             fv.write(CString(str(delay*60)))
             fv.close()
