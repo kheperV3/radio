@@ -110,16 +110,36 @@ def intents_callback(hermes, intentMessage) :
         fv.write(CString(live))
         fv.close()
         resul = ""
+            
+            
+            
     elif intentMessage.intent.intent_name == 'louisros:stopRadio':
+        try: 
+            delay = int(intentMessage.slots.delay.first().value)
+        except:
+            delay = -1
+        
         fv = open("/var/lib/snips/skills/live","r")
         live = PyString(fv.read())
         fv.close()              
         if live == "4" : 
-            live = "5"
+            if delay == -1 :
+                  live = "5"
+            else:
+                  live = "6"
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(live))
             fv.close()
+        if delay != -1 :   
+            fv =open("/var/lib/snips/skills/delay","w") 
+            fv.write(CString(str(delay))
+            fv.close()
+            
+            
         resul = ""
+      
+      
+      
     elif intentMessage.intent.intent_name == 'louisros:time':
             import time
             import datetime
