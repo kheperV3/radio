@@ -157,13 +157,13 @@ def intents_callback(hermes, intentMessage) :
             if date.minute == 1 :
                 minute = "une"
             if date.minute == 21 :
-                minute = "vingt et une"
+                minute = "vingt-et-une"
             if date.minute == 31 :
-                minute = "trente et une"
+                minute = "trente-et-une"
             if date.minute == 41 :
-                minute = "quarante et une"
+                minute = "quarante-et-une"
             if date.minute == 51 :
-                minute = "cinquante et une"
+                minute = "cinquante-et-une"
             resul = "il est   " + heure + 'heures    ' + minute
             
             
