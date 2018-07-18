@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-
+import time
+import datetime
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
@@ -145,8 +146,7 @@ def intents_callback(hermes, intentMessage) :
       
       
     elif intentMessage.intent.intent_name == 'louisros:time':
-            import time
-            import datetime
+
             date = datetime.datetime.now()
             heure = str(date.hour)
             if date.hour == 1 :
@@ -169,8 +169,8 @@ def intents_callback(hermes, intentMessage) :
             resul = "il est   " + heure + 'heures    ' + minute
             
     elif intentMessage.intent.intent_name == 'louisros:wakeUp':        
-            hr = intentMessage.slots.heure.first().value
-            mr = intentMessage.slots.minute.first().value
+            hr = int(intentMessage.slots.heure.first().value)
+            mr = int(intentMessage.slots.minute.first().value)
             date = datetime.datetime.now()
             t = date.hour * 60 + date.minute
             tr = hr * 60 + mr
