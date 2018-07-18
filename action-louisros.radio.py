@@ -21,7 +21,7 @@ La radio est composée :
                - dans le slot "radioName" de type custom "stations"
                - dans le dictionnaire "links" qui contient aussi les liens vers les stations
                (attention les valeurs de "stations" et les clés de "links" doivent être strictement identiques!)
-      A et B se synchronisent par 4 fichiers:
+      A et B se synchronisent par 5 fichiers:
                - volume : le volume (de 0 à 10)
                - link : le lien vers la radio
                - live : l'état du système
@@ -32,7 +32,9 @@ La radio est composée :
                     = 4     station en cours de diffusion
                     = 5     arrêt immédiat demandé
                     = 6     arrêt temporisé demandé
-                - delay : valeur du délai avant arrêt (en secondes)
+                    = 7     réveil demandé
+                - delay : valeur du délai avant arrêt (en secondes) 
+                - delayR : valeur du délai avant réveil (en secondes)
 """                    
 def PyString(s) :
       if s[len(s)-1] == '\0' :
@@ -167,10 +169,22 @@ def intents_callback(hermes, intentMessage) :
             resul = "il est   " + heure + 'heures    ' + minute
             
     elif intentMessage.intent.intent_name == 'louisros:wakeUp':        
-            heure = int(intentMessage.slots.heure.first().value)
-            minute = int(intentMessage.slots.minute.first().value)
-            
-            
+            hr = int(intentMessage.slots.heure.first().value)
+            mr = int(intentMessage.slots.minute.first().value)
+            date = datetime.datetime.now()
+            t = date.hour * 60 + date.minute
+            tr = hr * 60 + mr
+            d = tr - t
+            if d <=0 :
+                  d = d + 1440
+            d = d * 60      
+            fv =open("/var/lib/snips/skills/delayR","w") 
+            fv.write(CString(str(d)))
+            fv.close()
+            fv =open("/var/lib/snips/skills/live","w") 
+            fv.write(CString(str("7")))
+            fv.close()
+            resul = "C'est entendu, je vous réveille à " + str(hr) + " heures " + str(mr) + " précises"
             
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, resul)
