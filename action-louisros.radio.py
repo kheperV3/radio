@@ -169,8 +169,8 @@ def intents_callback(hermes, intentMessage) :
             resul = "il est   " + heure + 'heures    ' + minute
             
     elif intentMessage.intent.intent_name == 'louisros:wakeUp':        
-            hr = int(intentMessage.slots.heure.first().value)
-            mr = int(intentMessage.slots.minute.first().value)
+            hr = intentMessage.slots.heure.first().value
+            mr = intentMessage.slots.minute.first().value
             date = datetime.datetime.now()
             t = date.hour * 60 + date.minute
             tr = hr * 60 + mr
