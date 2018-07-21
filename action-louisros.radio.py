@@ -184,7 +184,10 @@ def intents_callback(hermes, intentMessage) :
             fv =open("/var/lib/snips/skills/live","w") 
             fv.write(CString(str("7")))
             fv.close()
-            resul = "C'est entendu, je vous réveille à " + str(hr) + " heures " + str(mr) + " précises"
+            mmr = str(mr)
+            if mr == 0 :
+                  mmr = ""
+            resul = "C'est entendu, je vous réveille à " + str(hr) + " heures " + mmr + " précises"
             
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, resul)
