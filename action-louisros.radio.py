@@ -168,7 +168,7 @@ def intents_callback(hermes, intentMessage) :
                 minute = "cinquante-et-une"
             resul = "il est   " + heure + 'heures    ' + minute
             
-    elif intentMessage.intent.intent_name == 'louisros:wakeUp':        
+    """elif intentMessage.intent.intent_name == 'louisros:wakeUp':        
             hr = int(intentMessage.slots.heure.first().value)
             mr = int(intentMessage.slots.minute.first().value)
             date = datetime.datetime.now()
@@ -188,7 +188,7 @@ def intents_callback(hermes, intentMessage) :
             if mr == 0 :
                   mmr = ""
             resul = "C'est entendu, je vous réveille à " + str(hr) + " heures " + mmr + " précises"
-            
+         """   
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, resul)
 
