@@ -33,7 +33,7 @@ La radio est composée :
                     = 4     station en cours de diffusion
                     = 5     arrêt immédiat demandé
                     = 6     arrêt temporisé demandé
-                    = 7     shutdown
+                   
                     
                 - delay : valeur du délai avant arrêt (en secondes) 
                 
@@ -142,13 +142,8 @@ def intents_callback(hermes, intentMessage) :
             fv.write(CString(str(delay*60)))
             fv.close()
                   
-        resul = ""
-    elif  intentMessage.intent.intent_name == 'louisros:radioOFF': 
-        live = 7
-        fv =open("/var/lib/snips/skills/live","w") 
-        fv.write(CString(str(live)))
-        fv.close()
-        resul = 'arrêt immédiat de la radio'
+        resul = "arrêt en cours"
+   
       
       
     elif intentMessage.intent.intent_name == 'louisros:time':
