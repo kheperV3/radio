@@ -7,7 +7,8 @@ Elle utilise un raspberry 3 et une carte audio spécifique DAC+2 haut parleurs+ 
 Elle est composée des éléments suivants:
 - l'application Snips "Radio draft" :
 avec 4 intents :
- - time : donne l'heure     ex: "quelle heure est-il ?" etc...
+
+          - time : donne l'heure     ex: "quelle heure est-il ?" etc...
  
           - setStation : sélectionne la radio  ex : "je voudrais écouter France Inter" ou "France Inter" etc...
           
