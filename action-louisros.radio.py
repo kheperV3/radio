@@ -50,6 +50,7 @@ def CString(s):
 
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
+             "Hardcore":"http://dir.xiph.org/listen/2126093/listen.mp3",\
              "France Culture":"http://direct.franceculture.fr/live/franceculture-midfi.mp3",\
              "FIP":"http://direct.fipradio.fr/live/fip-midfi.mp3",\
              "RMC":"http://rmc.bfmtv.com/rmcinfo-mp3",\
