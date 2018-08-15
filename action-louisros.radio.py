@@ -48,7 +48,6 @@ def CString(s):
             s = s + '\0'
       return s 
 def intents_callback(hermes, intentMessage) : 
-    hermes.publish_end_session(current_session_id, 'oui bien vu')  
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
              "France Culture":"http://direct.franceculture.fr/live/franceculture-midfi.mp3",\
              "FIP":"http://direct.fipradio.fr/live/fip-midfi.mp3",\
