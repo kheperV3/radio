@@ -47,7 +47,6 @@ def CString(s):
       if s[len(s)-1] != '\0' :
             s = s + '\0'
       return s 
-
 def intents_callback(hermes, intentMessage) : 
     hermes.publish_end_session(current_session_id, 'oui bien vu')  
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
@@ -193,7 +192,6 @@ def intents_callback(hermes, intentMessage) :
          """   
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, resul)
-
 
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
