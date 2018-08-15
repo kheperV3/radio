@@ -1,6 +1,7 @@
 # MaRadio
 
-MaRadio est une radio à commandes vocales basée sur SNIPS
+MaRadio est une radio à commandes vocales basée sur SNIPS.
+
 Elle utilise un raspberry 3 et une carte audio spécifique DAC+2 haut parleurs+ micro +bouton poussoir+led (https://www.raspiaudio.com)
 (elle fonctionne bien sûr avec d'autres cartes audio au prix de petites modifications)
 
