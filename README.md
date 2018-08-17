@@ -23,7 +23,7 @@ avec 4 intents :
 Pour mettre sur pieds l'application Snips il suffit de suivre la documentation de Snips avec résolution...
 
 Pour compiler radio.c il faut :
-- disposer de la bibliotheque vlc : libvlc-dev
+- disposer de la bibliotheque vlc : libvlc-dev (sudo apt-get install libvlc-dev)
 - executer la commande : cc -o radio -l vlc radio.c
 - placer l'executable radio dans le repertoire /home/pi
 
