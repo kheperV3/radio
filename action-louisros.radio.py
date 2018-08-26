@@ -197,8 +197,7 @@ if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback)
         h.loop_start()  
-        while 1:
-                  sleep(.1)
+        
           
             
         
