@@ -47,6 +47,12 @@ def CString(s):
       if s[len(s)-1] != '\0' :
             s = s + '\0'
       return s 
+def waitForNewSession():
+      a = 0
+      while True:
+            a = a + 1
+            sleep(0.1)
+
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
              "Hardcore":"http://dir.xiph.org/listen/2126093/listen.mp3",\
@@ -196,11 +202,9 @@ def intents_callback(hermes, intentMessage) :
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback)
-        h.loop_start()
-        while 1:
-                  sleep(0.1)
-      
-      
+        th = theading.Thread(target=self.waitForNewSession)
+        th.daemon = True
+        th.start() 
         h.loop_forever()
             
      
