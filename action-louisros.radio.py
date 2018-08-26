@@ -204,7 +204,7 @@ if __name__ == "__main__":
         h.subscribe_intents(intents_callback)   
         while True:
             h.loop_start()
-            sleep(.1)
+            time.sleep(.1)
             h.loop_stop()
 
             
