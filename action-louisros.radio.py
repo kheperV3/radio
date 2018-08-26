@@ -196,8 +196,7 @@ def intents_callback(hermes, intentMessage) :
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback)
-        while 1:
-       
-            sleep(.1)
+        h.loop_forever()   
+          
             
         
