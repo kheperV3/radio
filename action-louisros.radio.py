@@ -202,10 +202,11 @@ def intents_callback(hermes, intentMessage) :
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback)
+        h.loop_start()    
         th = theading.Thread(target=self.waitForNewSession)
         th.daemon = True
         th.start() 
-        h.loop_start()
+
             
      
         
