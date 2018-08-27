@@ -211,19 +211,19 @@ if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback) 
         while True:
-            h.loop_start()
+            #h.loop_start()
             time.sleep(.1)
             fv = open("/var/lib/snips/skills/session","r")
             session = int(PyString(fv.read()))
             fv.close() 
             if session == 1:
                 
-                  h.publish_start_session_action('localhost','oui cher maître',True,['louisros:time','louisros:stopRadio','louisros:changeVolume','louisros:selectStation'],'button')              
+                  #h.publish_start_session_action('localhost','oui cher maître',True,['louisros:time','louisros:stopRadio','louisros:changeVolume','louisros:selectStation'],'button')              
                   fv =open("/var/lib/snips/skills/session","w") 
                   fv.write(CString('0002'))
                   fv.close()  
             time.sleep(.1)
-            h.loop_stop()
+            #h.loop_stop()
            
 
             
