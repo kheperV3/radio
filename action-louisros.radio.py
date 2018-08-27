@@ -208,7 +208,7 @@ if __name__ == "__main__":
             session = int(PyString(fv.read()))
             fv.close() 
             if session == 1:
-                  publish_start_session_action()
+                  publish_start_session_action('oui cher maître',['louisros:time','stopRadio','changeVolume','selectStation'])
                   fv =open("/var/lib/snips/skills/session","w") 
                   fv.write(CString('0002'))
                   fv.close()
