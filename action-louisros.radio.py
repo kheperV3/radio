@@ -47,7 +47,7 @@ def CString(s):
       if s[len(s)-1] != '\0' :
             s = s + '\0'
       return s 
-def waitForNewSession():
+"""def waitForNewSession():
       fv = open("/var/lib/snips/skills/session","r")
       session = int(PyString(fv.read()))
       fv.close() 
@@ -57,7 +57,7 @@ def waitForNewSession():
             fv.write(CString('0002'))
             fv.close()  
       time.sleep(.1)
-
+"""
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
              "Hardcore":"http://dir.xiph.org/listen/2126093/listen.mp3",\
@@ -206,8 +206,11 @@ def intents_callback(hermes, intentMessage) :
 
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
-        h.subscribe_intents(intents_callback)   
-        h.loop_start()
+        h.subscribe_intents(intents_callback) 
+        while True:
+            h.loop_start()
+            time.sleep(.1)
+            h.loop_stop()
            
 
             
