@@ -204,6 +204,15 @@ if __name__ == "__main__":
         h.subscribe_intents(intents_callback)   
         while True:
             h.loop_start()
+            fv = open("/var/lib/snips/skills/session","r")
+            session = int(PyString(fv.read()))
+            fv.close() 
+            if session == 1:
+                  publish_start_session_action()
+                  fv =open("/var/lib/snips/skills/session","w") 
+                  fv.write(CString('0002'))
+                  fv.close()
+               
             time.sleep(.1)
             h.loop_stop()
 
