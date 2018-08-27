@@ -53,7 +53,8 @@ def waitForNewSession():
       session = int(PyString(fv.read()))
       fv.close() 
       if session == 1:
-            hermes.Hermes.publish_start_session_action(MQTT_ADDR,'oui cher maître',['louisros:time','louisros:stopRadio','louisros:changeVolume','louisros:selectStation'])
+            with Hermes(MQTT_ADDR) as h: 
+                  h.publish_start_session_action(MQTT_ADDR,'oui cher maître',['louisros:time','louisros:stopRadio','louisros:changeVolume','louisros:selectStation'])
             fv =open("/var/lib/snips/skills/session","w") 
             fv.write(CString('0002'))
             fv.close()  
