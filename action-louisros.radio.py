@@ -4,6 +4,7 @@
 from hermes_python.hermes import Hermes
 import time
 import datetime
+import threading
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
@@ -210,6 +211,9 @@ if __name__ == "__main__":
         while True:
             h.loop_start()
             time.sleep(.1)
+            th = threading.Thread(target=waitForNewSession)
+            th.daemon = True
+            th.start()
             h.loop_stop()
            
 
