@@ -47,7 +47,7 @@ def CString(s):
       if s[len(s)-1] != '\0' :
             s = s + '\0'
       return s 
-"""def waitForNewSession():
+def waitForNewSession():
       fv = open("/var/lib/snips/skills/session","r")
       session = int(PyString(fv.read()))
       fv.close() 
@@ -57,7 +57,7 @@ def CString(s):
             fv.write(CString('0002'))
             fv.close()  
       time.sleep(.1)
-"""
+
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
              "Hardcore":"http://dir.xiph.org/listen/2126093/listen.mp3",\
