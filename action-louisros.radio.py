@@ -48,10 +48,15 @@ def CString(s):
             s = s + '\0'
       return s 
 def waitForNewSession():
-      a = 0
-      while True:
-            a = a + 1
-            sleep(0.1)
+      fv = open("/var/lib/snips/skills/session","r")
+      session = int(PyString(fv.read()))
+      fv.close() 
+      if session == 1:
+            publish_start_session_action('oui cher maître',['louisros:time','stopRadio','changeVolume','selectStation'])
+            fv =open("/var/lib/snips/skills/session","w") 
+            fv.write(CString('0002'))
+            fv.close()  
+      time.sleep(.1)
 
 def intents_callback(hermes, intentMessage) : 
     links = {"RFI":"http://live02.rfi.fr/rfimonde-96k.mp3",\
@@ -202,17 +207,7 @@ def intents_callback(hermes, intentMessage) :
 if __name__ == "__main__":
     with Hermes(MQTT_ADDR) as h:           
         h.subscribe_intents(intents_callback)   
-        while True:
-            time.sleep(.1)
-            fv = open("/var/lib/snips/skills/session","r")
-            session = int(PyString(fv.read()))
-            fv.close() 
-            if session == 1:
-                  publish_start_session_action('oui cher maître',['louisros:time','stopRadio','changeVolume','selectStation'])
-                  fv =open("/var/lib/snips/skills/session","w") 
-                  fv.write(CString('0002'))
-                  fv.close()            
-            time.sleep(.1)
+        h.loop_start()
            
 
             
