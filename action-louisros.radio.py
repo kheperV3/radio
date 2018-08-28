@@ -217,7 +217,8 @@ if __name__ == "__main__":
             session = int(PyString(fv.read()))
             fv.close() 
             if session == 1:          
-                  h.publish_start_session_action('default','',['louisros:time','louisros:stopRadio','louisros:changeVolume','louisros:selectStation'],True,'button')              
+                  h.publish_start_session_action('default','',['louisros:time','louisros:stopRadio','louisros:changeVolume',\
+                  'louisros:selectStation','louisros:today','louisros:tomorrow'],True,'button')              
                   fv =open("/var/lib/snips/skills/session","w") 
                   fv.write(CString('0002'))
                   fv.close()  
